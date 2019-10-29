@@ -26,7 +26,7 @@ export default class Signup extends Component {
        console.log("try to login w: ", this.state.username ,"and", this.state.password)
        request.post(`${url}/home`)
        .send({
-           email: this.state.username,
+           name: this.state.username,
            password: this.state.password
        })
        .catch(err => console.log(err))
