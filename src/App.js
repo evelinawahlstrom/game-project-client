@@ -4,8 +4,7 @@ import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Signup from './components/Signup'
 import LoginFormContainer from "./components/LoginFormContainer";
-import Result from "./components/Result"
-import Board from "./components/Board"
+import BoardContainer from "./components/BoardContainer"
 
 class App extends Component {
   render() {
@@ -19,10 +18,9 @@ class App extends Component {
         ) : (
           <Link to="/login"> Login</Link>
         )}
-        <Board />
         <Route path="/login" exact component={LoginFormContainer} />
-        <Link to="/games" ></Link>
-        <Route path="/game" exact component={Board} /> 
+        <Link to="/games"> Games</Link>
+        <Route path="/games" exact component={BoardContainer}/>
         </header>
       </div>
     );

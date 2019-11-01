@@ -1,8 +1,10 @@
 import { X, O } from '../symbols/symbols';
 import { resultForSymbol } from '../logic/logic';
 import * as _ from 'lodash';
+import { ADD_SYMBOL } from '../actions/actions'
+import { START_AGAIN } from '../actions/actions'
 
-export const initialState = {
+const initialState = {
   board: {
     0: ['', '', ''],
     1: ['', '', ''],
@@ -14,29 +16,29 @@ export const initialState = {
   turn: O
 };
 
-const gameReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_SYMBOL':
       const {symbol, row, column} = action;
       const newState = _.cloneDeep(state);
       newState.board[row, column] = symbol;
 
-      const xResult = resultForSymbol(X, newState.board);
-      const oResult = resultForSymbol(O, newState.board);
+      // const xResult = resultForSymbol(X, newState.board);
+      // const oResult = resultForSymbol(O, newState.board);
 
-      if (xResult.won) {
-        newState.won = X;
-        newState.wonLine = xResult.line;
-      }
+      // if (xResult.won) {
+      //   newState.won = X;
+      //   newState.wonLine = xResult.line;
+      // }
 
-      if (oResult.won) {
-        newState.won = O;
-        newState.wonLine = oResult.line;
-      }
+      // if (oResult.won) {
+      //   newState.won = O;
+      //   newState.wonLine = oResult.line;
+      // }
 
-      if (!newState.won) {
-        newState.turn = newState.turn === O ? X : O;
-      }
+      // if (!newState.won) {
+      //   newState.turn = newState.turn === O ? X : O;
+      // }
 
       const boardIsFull = [
         ...newState.board[0],
@@ -58,4 +60,3 @@ const gameReducer = (state = initialState, action) => {
   }
 };
 
-export default gameReducer
