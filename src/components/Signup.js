@@ -30,6 +30,10 @@ export default class Signup extends Component {
            password: this.state.password
        })
        .catch(err => console.log(err))
+       this.setState({
+        username: "",
+        password: ""
+    })
    }
    render() {
        return (

@@ -1,8 +1,9 @@
 import { combineReducers } from "redux"
-import user from './users'
-
+import auth from './auth'
+import gameReducer from './GameReducer'
 
 
 export default combineReducers({
-    user,
+    auth,
+    gameReducer
  })
